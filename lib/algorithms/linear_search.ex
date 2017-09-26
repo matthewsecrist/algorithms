@@ -7,7 +7,7 @@ defmodule Algorithms.Linear do
   Main search function
 
   ## Examples
-    iex> Algorithms.Linear.search(51, Range.new(1, 100) |> Enum.to_list)
+    iex> Algorithms.Linear.search(51, Enum.into(1..100, []))
     {:ok, 50}
   """
   def search(item, [item]), do: {:ok, 0}
