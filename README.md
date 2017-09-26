@@ -5,7 +5,7 @@
 ### Binary Search
   Binary Search in Elixir is interesting. If you use a list, its a Linked List with requires an O(N) lookup to get the length and get the middle element. It actually ends up being slower than the tail recursive linear search. So, `Algorithms.Binary` includes `search/2` and `list_search/2` to work with.
 
-  `search/2` - Takes a list, converts it to a tuple and then performs a linear search. Finding an element and getting the length are both O(1), so this is much faster. Unfortunately, converting the list seems to fail when dealing with lists of around 16 million elements.
+  `search/2` - Takes a list, converts it to a tuple and then performs a binary search. Finding an element and getting the length are both O(1), so this is much faster. Unfortunately, converting the list seems to fail when dealing with lists of around 16 million elements.
 
   ```elixir
     iex> Algorithms.Binary.search(234, Enum.into(1..1000, []))
