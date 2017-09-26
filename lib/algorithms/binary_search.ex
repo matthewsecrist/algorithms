@@ -19,14 +19,14 @@ defmodule Algorithms.Binary do
   end
 
   # Throw an error when the list is empty.
-  def search(_, [], _, _), do: {:error, :bad_list}
+  defp search(_, [], _, _), do: {:error, :bad_list}
   # If the list is only one value, we return that value.
-  def search(item, [item], _, _), do: {:ok, 0}
+  defp search(item, [item], _, _), do: {:ok, 0}
   # If the list is only one value and the value is not
   # the one we're looking for return :not_found.
-  def search(_item, [_not_item], _, _), do: {:error, :not_found}
+  defp search(_item, [_not_item], _, _), do: {:error, :not_found}
   # Binary Search Algorithm
-  def search(item, list, startpos, endpos) do
+  defp search(item, list, startpos, endpos) do
     halfpoint = div(startpos + endpos, 2) # Find the halfpoint
     # Enum.fetch will either return {:ok, number} or :error
     # If it returns {:ok, number} we want to continue
