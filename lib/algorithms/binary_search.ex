@@ -8,29 +8,31 @@ defmodule Algorithms.Binary do
 
   ## Examples
     iex> Algorithms.Binary.search(32, Range.new(1, 100) |> Enum.to_list)
-    31
-
+    {:ok, 31}
+    iex> Algorithms.Binary.search(123, Range.new(1, 100) |> Enum.to_list)
+    {:ok, :not_found}
+    iex> Algorithms.Binary.search(1, [])
+    {:error, :bad_list}
   """
   def search(item, list) when is_list(list) do
-    search(item, list, 0, length(list) - 1)
+    search(item, list, 0, length(list))
   end
 
-  def search(item, list, startpos, endpos) when startpos < endpos do
+  def search(_, [], _, _), do: {:error, :bad_list}
+  def search(_, [_], _, _), do: {:ok, 0}
+  def search(item, list, startpos, endpos) do
     halfpoint = div(startpos + endpos, 2)
-    half = Enum.at(list, halfpoint)
-    cond do
-      item == Enum.at(list, startpos) ->
-        startpos
-      item == Enum.at(list, endpos) ->
-        endpos
-      item == half ->
-        halfpoint
-      item < half ->
-        search(item, list, startpos, halfpoint - 1)
-      item > half ->
-        search(item, list, halfpoint + 1, endpos)
+    with {:ok, half} <- Enum.fetch(list, halfpoint) do
+      cond do
+        item < half ->
+          search(item, list, startpos, halfpoint - 1)
+        item > half ->
+          search(item, list, halfpoint + 1, endpos)
+        true ->
+          {:ok, halfpoint}
+      end
+    else
+      _ -> {:ok, :not_found}
     end
   end
-
-  def search(_item, _list, startpos, endpos) when startpos >= endpos, do: nil
 end
