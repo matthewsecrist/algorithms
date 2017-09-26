@@ -13,16 +13,16 @@ defmodule Algorithms.Linear do
   def search(item, [item]), do: {:ok, 0}
   def search(_, []), do: {:error, :bad_list}
   def search(item, list) do
-    search(item, hd(list), tl(list), 0)
+    ls(item, hd(list), tl(list), 0)
   end
 
-  defp search(_, _, [], _), do: {:error, :not_found}
-  defp search(item, head, list, iteration) do
+  defp ls(_, _, [], _), do: {:error, :not_found}
+  defp ls(item, head, list, iteration) do
     cond do
       item == head ->
         {:ok, iteration}
       true ->
-        search(item, hd(list), tl(list), iteration + 1)
+        ls(item, hd(list), tl(list), iteration + 1)
     end
   end
 end

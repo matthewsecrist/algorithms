@@ -10,17 +10,17 @@ defmodule LinearSearchTest do
   end
 
   test "Finds 68 in a range of 0..100" do
-    list = Range.new(0, 100) |> Enum.to_list
+    list = Enum.into(0..100, [])
     assert Linear.search(68, list) == {:ok, 68}
   end
 
   test "Finds 512 in a range of 0..1000" do
-    list = Range.new(0, 1000) |> Enum.to_list
+    list = Enum.into(0..1000, [])
     assert Linear.search(512, list) == {:ok, 512}
   end
 
   test "Finds 2521 in a range of 1000..5000" do
-    list = Range.new(1000, 5000) |> Enum.to_list
+    list = Enum.into(1000..5000, [])
     assert Linear.search(2521, list) == {:ok, 1521}
   end
 
@@ -30,7 +30,7 @@ defmodule LinearSearchTest do
   end
 
   test "Does not find 999 in a range of 1..100" do
-    list = Range.new(1, 100) |> Enum.to_list
+    list = Enum.into(1..100, [])
     assert Linear.search(999, list) == {:error, :not_found}
   end
 
