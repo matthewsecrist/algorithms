@@ -21,6 +21,8 @@ defmodule Algorithms.Linear do
     cond do
       item == head ->
         {:ok, iteration}
+      item < head ->
+        {:error, :not_found}
       true ->
         ls(item, hd(list), tl(list), iteration + 1)
     end
