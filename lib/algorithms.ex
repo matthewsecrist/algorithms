@@ -1,5 +1,5 @@
 defmodule Algorithms do
   @moduledoc """
-  Documentation for Algorithms.
+  Implementation of different algorithms in Elixir.
   """
 end
