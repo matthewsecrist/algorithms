@@ -1,6 +1,7 @@
 # Algorithms
 
 ## Common algorithms in Elixir.
+[![Build Status](https://travis-ci.org/matthewsecrist/algorithms.svg?branch=master)](https://travis-ci.org/matthewsecrist/algorithms)
 
 ### Binary Search
   Binary Search in Elixir is interesting. If you use a list, its a Linked List with requires an O(N) lookup to get the length and get the middle element. It actually ends up being slower than the tail recursive linear search. So, `Algorithms.Binary` includes `search/2` and `list_search/2` to work with.
@@ -34,4 +35,14 @@
   ```elixir
     iex> Algorithms.Linear.search(123456, list)
     {:ok, 123455}
+  ```
+
+### Bubble Sort
+  Recursive Bubble Sort. Takes the head of the list and compares it to the rest of the list, finding the highest number. Then it removes it from the list and repeats.
+
+  ```elixir
+    iex> Algorithms.Bubble.sort([5,4,3,2,1])
+    {:ok, [1, 2, 3, 4, 5]}
+    iex> Algorithms.Bubble.sort([5,5,4,5,2,22,6,5,2,6,8,2436,4,2,4,62,4,6,2])
+    {:ok, [2, 2, 2, 2, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 8, 22, 62, 2436]}
   ```
