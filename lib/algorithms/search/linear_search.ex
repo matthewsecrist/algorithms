@@ -16,6 +16,11 @@ defmodule Algorithms.Linear do
     ls(item, hd(list), tl(list), 0)
   end
 
+  # Gets called by search as ls(item, head, list, iteration)
+  # If the item does not match the head of the list,
+  # Iteration increments by one, keeping track of where in the
+  # list we are. If item matches the head, then it returns
+  # the iteration.
   defp ls(_, _, [], _), do: {:error, :not_found}
   defp ls(item, head, list, iteration) do
     cond do
