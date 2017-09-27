@@ -11,10 +11,10 @@ defmodule Algorithms.Selection do
   the lowest number removed from the original list and placed into the new list.
 
   ## Examples
-    iex> Algorithms.Selection.sort([5,4,3,2,1])
-    {:ok, [1, 2, 3, 4, 5]}
-    iex> Algorithms.Selection.sort([5,5,4,5,2,22,6,5,2,6,8,2436,4,2,4,62,4,6,2])
-    {:ok, [2, 2, 2, 2, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 8, 22, 62, 2436]}
+      iex> Algorithms.Selection.sort([5,4,3,2,1])
+      {:ok, [1, 2, 3, 4, 5]}
+      iex> Algorithms.Selection.sort([5,5,4,5,2,22,6,5,2,6,8,2436,4,2,4,62,4,6,2])
+      {:ok, [2, 2, 2, 2, 4, 4, 4, 4, 5, 5, 5, 5, 6, 6, 6, 8, 22, 62, 2436]}
   """
   def sort(list) do
     select(list, [])

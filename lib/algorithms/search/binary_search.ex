@@ -11,12 +11,12 @@ defmodule Algorithms.Binary do
   to tuple.
 
   ## Examples
-    iex> Algorithms.Binary.search(32, Enum.into(1..100, []))
-    {:ok, 31}
-    iex> Algorithms.Binary.search(123, Enum.into(1.. 100, []))
-    {:error, :not_found}
-    iex> Algorithms.Binary.search(1, [])
-    {:error, :bad_list}
+      iex> Algorithms.Binary.search(32, Enum.into(1..100, []))
+      {:ok, 31}
+      iex> Algorithms.Binary.search(123, Enum.into(1.. 100, []))
+      {:error, :not_found}
+      iex> Algorithms.Binary.search(1, [])
+      {:error, :bad_list}
   """
   def search(item, list) when is_list(list) do
     tup = List.to_tuple(list)
@@ -33,12 +33,12 @@ defmodule Algorithms.Binary do
   with every iteration.
 
   ## Examples
-    iex> Algorithms.Binary.list_search(32, Enum.into(1..100, []))
-    {:ok, 31}
-    iex> Algorithms.Binary.list_search(123, Enum.into(1..100, []))
-    {:error, :not_found}
-    iex> Algorithms.Binary.list_search(1, [])
-    {:error, :bad_list}
+      iex> Algorithms.Binary.list_search(32, Enum.into(1..100, []))
+      {:ok, 31}
+      iex> Algorithms.Binary.list_search(123, Enum.into(1..100, []))
+      {:error, :not_found}
+      iex> Algorithms.Binary.list_search(1, [])
+      {:error, :bad_list}
   """
   def list_search(item, list) when is_list(list) do
     bs(item, list, 0, length(list))
@@ -72,8 +72,8 @@ defmodule Algorithms.Binary do
     end
   end
 
-  def tuple_bs(_, {}, _, _), do: {:error, :bad_list}
-  def tuple_bs(item, tuple, startpos, endpos) do
+  defp tuple_bs(_, {}, _, _), do: {:error, :bad_list}
+  defp tuple_bs(item, tuple, startpos, endpos) do
     halfpoint = div(startpos + endpos, 2)
     with {:ok, half} <- get_middle_element(tuple, halfpoint) do
       cond do
